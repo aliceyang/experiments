@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Slimbox 1.58 for MooTools 1.11 Demo</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="DC.Publisher" content="Christophe Beyls" />
+<meta name="DC.Creator" content="Christophe Beyls" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.11/mootools-yui-compressed.js"></script>
+<script type="text/javascript" src="js/slimbox.js"></script>
+<script type="text/javascript">//<![CDATA[
+	window.addEvent("domready", function() {
+		if (!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
+			$$($$("a").filter(function(el) {
+				return el.href && !el.href.indexOf("http://www.flickr.com/photos/") && el.firstChild && el.firstChild.src;
+			})).slimbox({
+				loop: true,
+				initialWidth: 1024,
+				initialHeight: 768,
+				overlayOpacity: 0.6,
+				overlayFadeDuration: 200,
+				resizeDuration: 1000,
+				resizeTransition: Fx.Transitions.Elastic.easeOut,
+				counterText: "This is image <strong>{x}</strong> on a total of <strong>{y}</strong> in this fabulous Flickr image gallery",
+				previousKeys: [37, 80, 16],
+				nextKeys: [39, 78, 17],
+			}, function(el) {
+				return [el.firstChild.src.replace(/_[mts]\.(\w+)$/, ".$1"),
+					(el.title || el.firstChild.alt) + '<br />Visit the <a href="' + el.href + '">Flickr page</a> for this picture.'];
+			});
+		}
+		try {
+			_gat._getTracker("UA-760577-1")._trackPageview();
+		} catch(e) {}
+	});
+//]]></script>
+
+<style type="text/css" media="screen">
+	@import url(css/slimbox.css);
+
+	html, body {
+		margin: 0;
+		padding: 0;
+	}
+
+	body {
+		font-family: "Lucida Grande", "Lucida Sans", Lucida, Verdana, Arial, Geneva, Helvetica, sans-serif;
+		font-size: small;
+		line-height: 1.5em;
+		color: #222;
+		width: 3200px;
+		height: 2000px;
+	}
+
+	h1, h2 {
+		font-weight: normal;
+		font-family: "Century Gothic", "Trebuchet MS", Verdana, Arial, Geneva, Helvetica, sans-serif;
+	}
+
+	h1 {
+		font-size: 200%;
+		color: #333;
+		margin: 20px 20px 0.5em 20px;
+	}
+
+	h2 {
+		font-size: 125%;
+		text-transform: uppercase;
+		letter-spacing: 3px;
+		color: #000;
+		margin: 1em 20px 0.5em 20px;
+	}
+
+	p {
+		margin: 0 20px 1em 20px;
+	}
+
+	a:link, a:visited {
+		color: #06c;
+		text-decoration: none;
+	}
+
+	a:hover {
+		color: #147;
+		text-decoration: none;
+	}
+
+	a img {
+		padding: 5px;
+		border: 1px solid #ccc;
+		margin: 2px;
+	}
+
+	a img:hover {
+		border-color: #06c;
+	}
+
+	#footer {
+		font-family: Verdana, Arial, Geneva, Helvetica, sans-serif;
+		font-size: 10px;
+		margin-top: 2em;
+	}
+	</style>
+</head>
+<body>
+	<h1>Slimbox 1.58 for MooTools 1.11 Demo</h1>
+
+	<p>This version supports older browsers too but is not compatible with quirks mode web pages.</p>
+
+	<h2>Single images</h2>
+
+	<p><a rel="lightbox" title="The Gilles, one of the Belgian cultural traditions. Here at Barvaux." href="img/me.jpg"><img src="images/25t.jpg" alt="Gilles at Barvaux" /></a><a rel="lightbox" title="Bill Gates, after receiving a pie in the face during his visit in Brussels, Belgium in 1998." href="images/24.jpg"><img src="images/24t.jpg" alt="Gates gets a pie" /></a></p>
+
+	<h2>Image set</h2>
+
+	<p>These are pictures of the renovation of the <a href="http://en.wikipedia.org/wiki/Atomium">Atomium</a> here in Brussels.</p>
+
+	<p><a rel="lightbox-atomium" title="The Atomium during its renovation. See the difference between old and new shiny spheres." href="/images/26.jpg"><img src="/images/26t.jpg" alt="Atomium in renovation" /></a><a rel="lightbox-atomium" title="Alpinists climbing on spheres during the renovation of the Atomium." href="/images/27.jpg"><img src="/images/27t.jpg" alt="Alpinists on the atomium" /></a><a rel="lightbox-atomium" title="Alpinists on the topmost sphere of the Atomium, at 100 meters from the ground." href="/images/28.jpg"><img src="/images/28t.jpg" alt="Alpinists on the topmost sphere" /></a><a rel="lightbox-atomium" title="All the electric circuits have been remade, so the Atomium can now shine like a Christmas tree again. The lights also animate during some nights." href="/images/29.jpg"><img src="/images/29t.jpg" alt="Atomium sphere at night" /></a><a rel="lightbox-atomium" title="A global view of the new Atomium at night." href="/images/30.jpg"><img src="/images/30t.jpg" alt="Night view of the Atomium" /></a></p>
+
+	<h2>Customization</h2>
+
+	<p>You can change every parameter of Slimbox and make it work with any kind of link or element.<br />
+	Below is an example of integration with Flickr links and custom options.</p>
+
+	<p><a href="http://www.flickr.com/photos/14516334@N00/345009210/"><img src="http://farm1.static.flickr.com/159/345009210_1f826cd5a1_t.jpg" alt="A nice bee." /></a><a href="http://www.flickr.com/photos/alphageek/233472093/" title="Keyboard navigation is also customized here so you can use the Shift and Ctrl keys to navigate between images. Also, navigating to the next image will bring you back to the first one (loop option)."><img src="http://farm1.static.flickr.com/85/233472093_1f1d235e7b_t.jpg" alt="Flowers" /></a></p>
+
+	<h2>Remarks</h2>
+
+	<p>This page is both large and tall, allowing you to test the horizontal and vertical scrolling while Slimbox is open.</p>
+
+	<p>You can also test <a href="/demo/slimbox/">Slimbox for MooTools 1.2</a>.</p>
+
+	<p id="footer">&#169; 2006-2009 Christophe Beyls. Valid <a href="http://validator.w3.org/check?uri=referer" rel="nofollow" title="Check this page's HTML5 validity">HTML5</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" rel="nofollow" title="Check this page's CSS validity">CSS</a>.</p>
+</body>
+
+</html>

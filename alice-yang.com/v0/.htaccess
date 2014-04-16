@@ -1,0 +1,6 @@
+rewriteengine on
+rewritecond %{HTTP_HOST} ^www\.(.*) [NC]
+rewriterule ^/?(.*) http://%1/$1 [L,R=permanent]
+
+ErrorDocument 404 /errorPages/404.html
+
